@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Chatbot FURIA</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    
+    <div id="tela-inicial">
+      <img src="https://upload.wikimedia.org/wikipedia/pt/f/f9/Furia_Esports_logo.png"  id="logo-furia" />
+      <h1>Bem-vindo ao Chatbot da FURIA!</h1>
+      <p>Entre, venha conversar com a Pantera e se torne mais FURIOSO!</p>
+      <button id="entrar-chat">Entrar no Chat</button>
+    </div>
+
+    
+    <div id="chat" style="display: none;">
+      <div id="chat-header">
+        <button id="novo-chat">Novo chat!</button>
+      
+        <div id="chat-title">
+          <img src="https://upload.wikimedia.org/wikipedia/pt/f/f9/Furia_Esports_logo.png" alt="Logo FURIA" id="logo-chat" />
+          <h2>Chatbot da FURIA</h2>
+        </div>
+      
+        <button id="abrir-menu">Menu</button>
+      </div>
+      
+
+      <div id="messages"></div>
+      <input id="input" type="text" placeholder="Fala aí com a FURIA..." />
+      <button onclick="sendMessage()">Enviar</button>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
