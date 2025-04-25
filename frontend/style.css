@@ -1,0 +1,222 @@
+body {
+  background-color: #0e0e0e;
+  background-image: url("https://www.transparenttextures.com/patterns/dark-mosaic.png");
+  background-repeat: repeat;
+  background-size: auto;
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+#tela-inicial {
+  text-align: center;
+}
+
+#logo-furia {
+  width: 200px;
+  margin-bottom: 20px;
+}
+
+button,
+#entrar-chat,
+button[onclick] {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: white;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  opacity: 0.9;
+  transition: opacity 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  font-weight: bold;
+}
+
+button:hover,
+#entrar-chat:hover,
+button[onclick]:hover {
+  opacity: 1;
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.6);
+}
+
+#chat {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  min-height: 500px;
+  background-color: rgba(0, 0, 0, 0.85);
+  border-radius: 10px;
+  padding: 20px;
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  backdrop-filter: blur(2px);
+}
+
+#messages {
+  flex-grow: 1;
+  height: 350px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: #121212;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.message {
+  max-width: 80%;
+  padding: 10px 15px;
+  border-radius: 15px;
+  font-size: 14px;
+  line-height: 1.4;
+  word-wrap: break-word;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeIn 0.5s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.message.bot {
+  background-color: #222;
+  color: white;
+  align-self: flex-start;
+  border-bottom-left-radius: 0;
+}
+
+.message.user {
+  background-color: #ffffff;
+  color: #000000;
+  align-self: flex-end;
+  border-bottom-right-radius: 0;
+}
+
+#input {
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  width: 97%;
+  outline: none;
+}
+
+#chat button {
+  display: block;
+  margin: 10px auto 0 auto;
+  padding: 10px 30px;
+  font-size: 16px;
+  background-color: #ffffff;
+  color: #000000;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  opacity: 0.9;
+  transition: opacity 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+#chat button:hover {
+  opacity: 1;
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.6);
+}
+
+#chat-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  border-bottom: 1px solid white;
+  margin-bottom: 15px;
+}
+
+#chat-header h2 {
+  font-size: 20px;
+  color: white;
+  margin: 0;
+}
+
+#chat-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#logo-chat {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.menu-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  margin-right: 8px;
+  padding: 8px 14px;
+  background-color: white;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.menu-option:hover {
+  background-color: #f0f0f0;
+  transform: scale(1.05);
+}
+
+#chat-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+#novo-chat,
+#abrir-menu {
+  background-color: white;
+  color: black;
+  padding: 6px 12px;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+#novo-chat:hover,
+#abrir-menu:hover {
+  background-color: #eeeeee;
+  transform: scale(1.05);
+}
+
+.message.bot ul {
+  margin: 6px 0 0 0;
+  padding-left: 20px;
+}
+
+.message.bot ul li {
+  margin-bottom: 5px;
+  line-height: 1.5;
+}
