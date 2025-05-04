@@ -1,14 +1,29 @@
 import express from "express";
 import cors from "cors";
+import path from "path";
+import { fileURLToPath } from "url";
+
 import players from "./data/players.js";
 import curiosidades from "./data/curiosidades.js";
 
 const app = express();
-const port = 3001;
+const port = process.env.PORT || 3001;
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Middleware
 app.use(cors());
 app.use(express.json());
 
+// Servir arquivos do frontend
+app.use(express.static(path.join(__dirname, "../frontend")));
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "../frontend/index.html"));
+});
+
+// Controle de estado
 let lineupAtivo = false;
 let historico = [];
 
@@ -36,8 +51,8 @@ app.post("/api/message", (req, res) => {
 Aqui estão algumas opções:
 - Digite <strong>lineup</strong> para ver a escalação atual.
 - Digite <strong>titulos</strong> para conhecer nossas conquistas.
-- Digite <strong>curiosidades</strong> para saber informacoes interessante sobre o time.
-- Digite <strong>comandos</strong> ou <strong>ajuda</strong> para ver mais opcoes que voce pode perguntar.
+- Digite <strong>curiosidades</strong> para saber informações interessantes sobre o time.
+- Digite <strong>comandos</strong> ou <strong>ajuda</strong> para ver mais opções que você pode perguntar.
 `;
   } else if (userMessage === "comandos" || userMessage === "ajuda") {
     botResponse = `📋 Comandos disponíveis:
@@ -56,16 +71,16 @@ Aqui estão algumas opções:
   } else if (userMessage === "lineup") {
     lineupAtivo = true;
     botResponse = `
-    <strong>📋 Lineup atual da FURIA:</strong>
-    <ul>
-      <li>KSCERATO</li>
-      <li>yuurih</li>
-      <li>YEKINDAR</li>
-      <li>molodoy</li>
-      <li>FalleN</li>
-    </ul>
-    <p>💬 Digite o nome de um dos jogadores para saber mais sobre ele.</p>
-  `;
+      <strong>📋 Lineup atual da FURIA:</strong>
+      <ul>
+        <li>KSCERATO</li>
+        <li>yuurih</li>
+        <li>YEKINDAR</li>
+        <li>molodoy</li>
+        <li>FalleN</li>
+      </ul>
+      <p>💬 Digite o nome de um dos jogadores para saber mais sobre ele.</p>
+    `;
   } else if (lineupAtivo && players[userMessage]) {
     botResponse = players[userMessage];
   } else if (
@@ -74,13 +89,13 @@ Aqui estão algumas opções:
   ) {
     lineupAtivo = false;
     botResponse = `
-    <strong>🏆 Conquistas da FURIA:</strong>
-    <ul>
-      <li>🇧🇷 CBCS — Dominamos o campeonato nacional com campanha impecável e poucas derrotas.</li>
-      <li>🇺🇸 ESL Pro League NA — Conquistamos o título na América do Norte, enfrentando grandes equipes como Liquid e Evil Geniuses.</li>
-      <li>🌎 Participações em Majors — Representamos o Brasil no principal palco mundial, sempre avançando para playoffs com atuações marcantes.</li>
-    </ul>
-  `;
+      <strong>🏆 Conquistas da FURIA:</strong>
+      <ul>
+        <li>🇧🇷 CBCS — Dominamos o campeonato nacional com campanha impecável e poucas derrotas.</li>
+        <li>🇺🇸 ESL Pro League NA — Conquistamos o título na América do Norte, enfrentando grandes equipes como Liquid e Evil Geniuses.</li>
+        <li>🌎 Participações em Majors — Representamos o Brasil no principal palco mundial, sempre avançando para playoffs com atuações marcantes.</li>
+      </ul>
+    `;
   } else if (
     userMessage.includes("curiosidade") ||
     userMessage.includes("curiosidades")
@@ -141,7 +156,7 @@ Aqui estão algumas opções:
   } else {
     lineupAtivo = false;
     botResponse =
-      "🤔 Furioso, não entendi sua mensagem. Digite **menu** para ver as opções disponíveis.";
+      "🤔 Furioso, não entendi sua mensagem. Digite <strong>menu</strong> para ver as opções disponíveis.";
   }
 
   res.json({ reply: botResponse });
