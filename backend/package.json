@@ -6,10 +6,12 @@
   "scripts": {
     "start": "node server.js"
   },
-  "keywords": [],
-  "author": "",
+  "description": "Chatbot da FURIA com Node.js e frontend integrado",
+  "author": "Seu Nome",
   "license": "ISC",
-  "description": "",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^5.1.0"
