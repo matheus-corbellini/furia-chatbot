@@ -27,7 +27,7 @@ Este projeto é um chatbot interativo para fãs da FURIA Esports — time brasil
 
 Acesse agora mesmo:
 
-👉 [https://NOME-DO-SEU-PROJETO.onrender.]([https://NOME-DO-SEU-PROJETO.onrender.com](https://furia-chatbot-rfif.onrender.com))
+👉 [https://furia-chatbot.onrender.](https://furia-chatbot-rfif.onrender.com)
 
 
 ---
