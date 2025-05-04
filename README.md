@@ -47,5 +47,5 @@ npm install
 3. Rode o servidor
 npm start
 
-4. Acesse no navegador
-http://localhost:3001
+4. Acesse no navegador com o link
+https://furia-chatbot-rfif.onrender.com
